@@ -3,6 +3,8 @@ package com.example.androidpracticumcustomview
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.androidpracticumcustomview.ui.theme.CustomContainer
@@ -22,8 +24,8 @@ class MainActivity : ComponentActivity() {
          */
 
 
-        //startXmlPracticum() // «традиционный» android (XML)
-        startComposePracticum() // Jetpack Compose
+        startXmlPracticum() // «традиционный» android (XML)
+        //startComposePracticum() // Jetpack Compose
 
     }
 
@@ -33,6 +35,7 @@ class MainActivity : ComponentActivity() {
 
         val firstView = TextView(this).apply {
             text = "firstView"
+            layoutParams = ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         }
 
         val secondView = TextView(this).apply {
