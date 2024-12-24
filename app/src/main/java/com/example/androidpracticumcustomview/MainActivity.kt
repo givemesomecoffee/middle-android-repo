@@ -6,6 +6,8 @@ import android.os.Looper
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.androidpracticumcustomview.ui.theme.CustomContainer
+import androidx.activity.compose.setContent
+import com.example.androidpracticumcustomview.ui.theme.ComposeViewScreen
 
 /*
 Задание:
@@ -18,9 +20,11 @@ class MainActivity : ComponentActivity() {
         /*
         Раскомментируйте нужный вариант
          */
-        startXmlPracticum() // «традиционный» android (XML)
-//          setContent { // Jetpack Compose
-//             MainScreen()
+
+
+        //startXmlPracticum() // «традиционный» android (XML)
+        startComposePracticum() // Jetpack Compose
+
     }
 
     private fun startXmlPracticum() {
@@ -28,18 +32,25 @@ class MainActivity : ComponentActivity() {
         setContentView(customContainer)
 
         val firstView = TextView(this).apply {
-            // TODO
-            // ...
+            text = "firstView"
         }
 
         val secondView = TextView(this).apply {
-            // TODO
-            // ...
+            text = "secondView"
         }
+
+        customContainer.addView(firstView)
 
         // Добавление второго элемента через некоторое время
         Handler(Looper.getMainLooper()).postDelayed({
             customContainer.addView(secondView)
         }, 2000)
     }
+
+    private fun startComposePracticum(){
+        setContent {
+            ComposeViewScreen()
+        }
+    }
+
 }
