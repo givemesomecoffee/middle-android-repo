@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ComposeCustomViewGroup(
+    modifier: Modifier = Modifier,
     first: @Composable () -> Unit,
     second: @Composable () -> Unit
 ) {
@@ -60,7 +61,7 @@ fun ComposeCustomViewGroup(
     }
 
     Layout(
-        modifier = Modifier.background(Color.LightGray),
+        modifier = modifier.background(Color.LightGray),
         content = {
             Box(
                 Modifier
@@ -80,6 +81,9 @@ fun ComposeCustomViewGroup(
             }
         }
     ) { measurables, constraints ->
+        if (measurables.size > 2) {
+            throw IllegalStateException()
+        }
         val placeables = measurables.map { measurable ->
             measurable.measure(constraints)
         }
